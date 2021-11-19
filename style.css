@@ -1,0 +1,1060 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    /* font-family: 'Noto Serif', serif; */
+    /* font-family: 'Oswald', sans-serif; */
+}
+body{
+    background-color: #1A1C22;
+    overflow: hidden;
+}
+body::-webkit-scrollbar {
+    width: 0;
+}
+.mainContainer{
+    width: 100%;
+    min-height: 100vh;
+    background-color: #1A1C22;
+    display: flex;
+    position: relative;
+}
+nav{
+    width: 5%;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .6s;
+    position: fixed;
+    z-index: 99;
+}
+.mainNavActive{
+    width: 25%;
+    transition: .6s;
+}
+.navBar{
+    width: 65%;
+    height: 95vh;
+    background-color: #272A32;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    transition: .5s;
+}
+.navBarActive{
+    width: 75%;
+    align-items: flex-start;
+    padding: 30px;
+    transition: .3s;
+}
+.logo{
+    height: 10%;
+}
+.logo img{
+    width: 35px;
+    cursor: pointer;
+}
+.menu{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+.logo{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.user,.home,.favourite,.help,.expend,.logout{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    display: flex;
+    padding-left: 10%;
+}
+#chevronLeft{
+    display: none;
+}
+.menuActive{
+ padding: 0;
+}
+.user:hover,.home:hover,.favourite:hover,.help:hover,.expend:hover,.logout:hover{
+    background-color: #474c58;
+    border-radius: 10px;
+}
+.logo h1,.user h1,.home h1,.favourite h1,.expend h1,.help h1,.logout h1{
+    margin-left: 10px;
+    color: rgb(122, 122, 122);
+    display: none;
+}
+.user img,.home img,.favourite img,.help img,.expend img,.logout img{
+    width: 28px;
+    opacity: 70%;
+    cursor: pointer;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.overViewContainer{
+    width: 100%;
+    min-height: 100%;
+    margin-left: 100px;
+}
+.categoryContainer{
+    width: 95%;
+    position: fixed;
+    z-index: 98;
+}
+.searchAndNoti{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 60px;
+}
+.search{
+    width: auto;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+}
+.search img{
+    width: 25px;
+}
+.search input{
+    width: 300px;
+    height: 40px;
+    margin-left: 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    caret-color: rgb(255, 255, 255);
+    color: rgb(204, 204, 204);
+}
+.noti{
+    margin-right: 40px;
+    cursor: pointer;
+}
+.category{
+    width: 150px;
+    display: flex;
+    height: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
+    overflow: hidden;
+    transition: .2s;
+    z-index: 99;
+}
+.categoryActive{
+    width: 150px;
+    height: 250px;
+    background-color: #272A32;
+    padding: 10px;
+    border-radius: 15px;
+    transition: .2s;
+    z-index: 99;
+}
+.categoryTitles a{
+    font-size: 1rem;
+    color: rgb(204, 204, 204);
+    text-decoration: none;
+}
+.categoryTitles h3{
+    margin-bottom: 10px;
+    opacity: 70%;
+}
+.category h3:hover{
+    opacity: 100%;
+}
+#chevronDown{
+    cursor: pointer;
+}
+#chevronUp{
+    display: none;
+    cursor: pointer;
+}
+.noti{
+    display: flex;
+}
+.noti a{
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: white;
+}
+.signUpBtn,.signInBtn{
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+.signUpBtn{
+    background-color: royalblue;
+    color: white;
+    font-weight: bold;
+}
+.signInBtn{
+    background-color: #9d9fa7;
+    color: white;
+    font-weight: bold;
+}
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.featuredNewsTitle{
+    margin: 20px;
+    margin-top: 140px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.featuredNewsTitle h1{
+    color: white;
+}
+.postContainer{
+    width: 99%;
+    height: 80vh;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.postContainer::-webkit-scrollbar{
+    width: 0;
+}
+.post{
+    width: 60%;
+    height: auto;
+    margin-bottom: 100px;
+    background-color: #34363b;
+    border-radius: 10px;
+    position: relative;
+}
+.authorProfile {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+.authorProfile img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.authorProfile h3{
+    color: white;
+    padding-left: 10px;
+    font-weight: bolder;
+}
+.postTitle{
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.postTitle h1{
+    font-size: 2rem;
+    margin: 0;
+    color: white;
+}
+.postContent{
+    margin-bottom: 20px;
+    height: 1.3em;
+    overflow: hidden;
+    width: 100%;
+    word-spacing: 2px;
+    scroll-behavior: smooth;
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+}
+.postContent span{
+    width: 100%;
+    color: white;
+    opacity: 70%;
+    font-size: 1.1rem;
+}
+.contentImage{
+    width: 100%;
+    height: 500px;
+}
+.contentImage img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.postComment{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #474c58;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    position: absolute;
+    bottom: -65px;
+    left: 45%;
+    cursor: pointer;
+}
+.postComment:hover{
+    background-color: #9d9fa7;
+}
+.postComment img{
+    width: 35px;
+}
+.addNewArticle{
+    width: 12%;
+    margin-right: 100px;
+    height: 50px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.addNewArticle a{
+    display: flex;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+.addNewArticle:hover{
+    background-color: royalblue;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+}
+.addNewArticle img{
+    width: 30px;
+}
+.addNewArticle h2{
+    margin-left: 10px;
+    color: white;
+    font-size: 1.3rem;
+}
+.news{
+    width: 400px;
+    height: 320px;
+    background-color: #474c58;
+    width: 100%;
+    position: relative;
+    z-index: 90;
+}
+.news::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 50%;
+    position: absolute;
+}
+.news h2{
+    position: absolute;
+    color: rgba(255, 255, 255,50%);
+    font-size: 3rem;
+    top: 40%;
+    left: 30%;
+}
+.news h1{
+    position: absolute;
+    font-size: 5rem;
+    color: rgba(255, 255, 255,80%);
+    top: 42%;
+    left: 25%;
+}
+.news img{
+    width: 100%;
+    height: 100%;
+    z-index: 90;
+    cursor: pointer;
+    object-fit: cover;
+}
+#a{
+    grid-column: 1/3;
+    grid-row: 1/3;
+    width: 100%;
+    height: 100%;
+}
+#a img{
+    width: 100%;
+    height: 100%;
+}
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.addArticleContainer{
+    width: 94%;
+    min-height: 90%;
+    margin-left: 100px;
+    justify-content: center;
+    display: flex;
+    
+}
+.addArticleContainer form{
+    margin-top: 20px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.addArticleContainer h1{
+    color: white;
+    font-weight: bolder;
+}
+.addArticleContainer label{
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.addArticleContainer input,.addArticleContainer textarea{
+    height: 50px;
+    background-color: transparent;
+    border: solid rgba(255, 255, 255,50%) .5px;
+    border-radius: 20px;
+    padding: 10px;
+    outline: none;
+    color: rgba(255, 255, 255,80%);
+    font-size: 1.3rem;
+    resize: none;
+}
+.addArticleContainer textarea{
+    height: auto;
+}
+.addArticleContainer::-webkit-scrollbar{
+    width: 0;
+}
+.addArticleContainer button{
+    width: 30%;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: white;
+    background-color: royalblue;
+    border: none;
+    margin-top: 20px;
+    margin-left: 30%;
+}
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.registerContainer{
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0,.7);
+    z-index: 109;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register{
+    width: 80%;
+    min-height: 80vh;
+    position: relative;
+    background-color: #1A1C22;
+    border-radius: 20px;
+    display: flex;
+    z-index: 201;
+}
+.registerImage{
+    width: 40%;
+    height: 100%;
+}
+.registerLogo{
+    padding: 25px;
+    display: flex;
+    align-items: center;
+}
+.registerLogo img{
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
+.registerLogo h2{
+    color: white;
+}
+.registerIllustration img{
+    width: 550px;
+    height: 550px;
+    object-fit: cover;
+    opacity: 70%;
+}
+.registerFormContainer{
+    width: 60%;
+    height: 100%;
+}
+.registerFormTitle h1{
+    color: white;
+    padding: 20px;
+    font-size: 2.5rem;
+}
+.registerForm{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.registerForm form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+.registerForm label{
+    font-size: 1.3rem;
+    color: white;
+}
+.registerForm input{
+    width: 70%;
+    height: 60px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: transparent;
+    border: solid white 1px;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    caret-color: royalblue;
+    color: white;
+    outline: none;
+}
+.registerForm input:focus{
+    border: solid royalblue 2px;
+}
+.registerForm button{
+    width: 25%;
+    height: 55px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: royalblue;
+    margin-left: 20%;
+    color: white;
+    cursor: pointer;
+}
+.registerForm button:hover{
+    background-color: rgb(96, 129, 230);
+}
+.switchToSignIn{
+    width: 65%;
+    margin-top: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.switchToSignIn span{
+    color: white;
+}
+.switchToSignIn a{
+    color: royalblue;
+    padding-left: 5px;
+    text-decoration: none;
+}
+.cancelRegister{
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+.cancelRegister a{
+    color: white;
+}
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.signInTitle h1{
+    color: white;
+    font-size: 3rem;
+    padding: 20px;
+}
+.signIn{
+    width: 70%;
+    min-height: 50vh;
+    display: flex;
+    position: relative;
+    background-color: #1A1C22;
+    border-radius: 20px;
+    display: flex;
+    z-index: 201;
+}
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.userProfileContainer{
+    width: 25%;
+    min-height: 100%;
+    display: flex;
+    padding-left: 90px;
+    align-items: center;
+}
+.userProfile{
+    width: 100%;
+    height: 95%;
+    background-color: #272A32;
+    border-radius: 30px;
+}
+
+.userPostsContainer{
+    width: 74%;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+.userPosts{
+    width: 100%;
+    height: 95%;
+    background-color: #272A32;
+    border-radius: 30px;
+}
+.welcomeUser{
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.editIcon{
+    margin-left: 100px;
+    cursor: pointer;
+}
+.editIcon img{
+    width: 20px;
+    height: 20px;
+}
+#cancelEditProfileIcon{
+    display: none;
+}
+.showCancelButton{
+    display: none;
+}
+.welcomeUser h1{
+    font-weight: bold;
+    color: white;
+}
+.profilePic input{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+.profileInfoContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.profilePic{
+    margin-top: 20px;
+    width: 150px;
+    height: 150px;
+    background-color: #656870;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+}
+.profilePic input{
+    position: absolute;
+    z-index: 100;
+}
+.profilePic img{
+    position: absolute;
+    object-fit: cover;
+}
+.profilePic:Hover{
+    opacity: 80%;
+}
+.profilePic img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.profileUserName{
+    padding-top: 5px;
+}
+.profileUserName h1{
+    color: white;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+.profileUserDescription{
+    width: 90%;
+    margin-top: 50px;
+}
+.profileUserDescription h2{
+    font-size: 1.2rem;
+    color: white;
+    padding-bottom: 8px;
+    opacity: 80%;
+}
+.profileUserDescription h3{
+    color: white;
+    opacity: 50%;
+    font-size: 1.1rem;
+    text-align: start;
+    width: 100%;
+}
+.profilePhone{
+    margin-top: 20px;
+    width: 90%;
+}
+.profilePhone h2{
+    color: white;
+    opacity: 80%;
+    padding-bottom: 8px;
+}
+.profilePhone h3{
+    color: white;
+    opacity: 50%;
+    font-size: 1.1rem;
+    text-align: start;
+    width: 100%;
+}
+.profileEmail{
+    width: 90%;
+    margin-top: 20px;
+}
+.profileEmail h2{
+    color: white;
+    opacity: 80%;
+    padding-bottom: 8px;
+}
+.profileEmail h3{
+    color: white;
+    opacity: 50%;
+    font-size: 1.1rem;
+    text-align: start;
+    width: 100%;
+}
+.userPostsTitle{
+    padding: 20px;
+}
+.userPostsTitle h1{
+    font-size: 2.1rem;
+    color: white;
+    font-size: 2.3rem;
+}
+.articleContainer{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    height: 80vh;
+    overflow: scroll;
+    padding-left: 20px;
+    padding-top: 30px;
+}
+.articleContainer::-webkit-scrollbar{
+    width: 0;
+    scroll-behavior: smooth;
+}
+.article{
+    width: 45%;
+    height: 300px;
+    background-color: #656870;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+}
+.article img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.articleTitle{
+    position: absolute; 
+    color: white;
+    left: 20px;
+    bottom: 50%;
+    font-size: 3rem;
+    font-weight: bolder;
+}
+.articleContent{
+    position: absolute;
+    bottom: 20px;
+    color: white;
+    opacity: 70%;
+    left: 20px;
+    white-space: wrap;
+    overflow: hidden;
+    width: 90%;
+    height: 20%;
+    text-overflow: clip;
+}
+.article:hover{
+    opacity: 80%;
+}
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.editUserProfile{
+    width: 100%;
+    height: 95%;
+    background-color: #272A32;
+    border-radius: 30px;
+    display: none;
+}
+.editUserProfile form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.editUserProfile input{
+    width: 100%;
+    border: none;
+    border-bottom: white solid 1.5px;
+    background: transparent;
+    outline: none;
+    color: white;
+    font-size: 1.1rem;
+    border-bottom: solid rgba(255, 255, 255,50%) 1.5px;
+}
+.editUserProfile textarea{
+    border: none;
+    width: 100%;
+    background: transparent;
+    border-bottom: solid rgba(255, 255, 255,50%) 1.5px;
+    outline: none;
+    caret-color: white;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255,50%);
+    padding: 5px;
+    resize: none;
+}
+.editUserProfile textarea::-webkit-scrollbar{
+    width: 0;
+}
+.editUserProfile label{
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.editUserProfile button{
+    width: 200px;
+    height: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background-color: royalblue;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+}
+.editAbout{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.editUserName{
+    margin-top: 20px;
+}
+.editPhone{
+    width: 90%;
+    margin-top: 20px;
+}
+.editEmail{
+    width: 90%;
+    margin-top: 20px;
+}
+.confirmUserEdit{
+    margin-top: 50px;
+}
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+@media(max-width:1610px){
+    .navBar{
+        width: 100%;
+    }
+    .switchToSignIn{
+        margin-top: 20px;
+    }
+}
+@media(max-width:1200px){
+    .categoryContainer{
+        width: 90%;
+    }
+    .registerForm{
+        margin-left: 60px;
+    }
+    .registerIllustration{
+        margin-top: 40px;
+    }
+    .registerIllustration img{
+        width: 400px;
+        height: 400px;
+    }
+}
+@media(max-width:1066px){
+    nav{
+        width: 8%;
+    }
+    .logo h1, .user h1, .home h1, .favourite h1, .expend h1, .help h1{
+        font-size: 1.1rem;
+    }
+    .news h2{
+        font-size: 2rem;
+    }
+}
+@media(max-width:812px){
+    .featuredNewsContainer{
+        display: flex;
+        flex-direction: column;
+    }
+    #a{
+        height: 300px;
+    }
+    .featuredNewsContainer{
+        display: none;
+    }
+    .featuredNewsTitle{
+        display: none;
+    }
+    .registerIllustration{
+        display: none;
+    }
+    .registerFormContainer{
+        width: 100%;
+    }
+    .register{
+        flex-direction: column;
+    }
+    .signIn{
+        flex-direction: column;
+        min-height: 70vh;
+    }
+    .registerForm{
+        width: 90%;
+    }
+    .registerForm form{
+        margin-top: 10px;
+    }
+    .registerLogo{
+        padding: 18px;
+    }
+    .registerFormTitle{
+        width: 100%;
+    }
+    .registerFormTitle h1{
+        padding: 10px;
+        padding-left: 50px;
+        font-size: 2rem;
+    }
+    .switchToSignIn{
+        width: 90%;
+    }
+}
+@media(max-width:681px){
+    .register{
+        width: 70%;
+    }
+    .registerImage{
+        width: 100%;
+    }
+    .signIN{
+        width: 70%;
+    }
+}
+@media(max-width:524px){
+    nav{
+        width: 15%;
+    }
+    .searchAndNoti{
+        margin-top: 30px;
+    }
+    .search input{
+        width: 100px;
+    }
+    .categoryTitles a{
+        font-size: .8rem;
+    }
+    .chevronDown img{
+        width: 20px;
+    }
+    .logo h1, .user h1, .home h1, .favourite h1, .expend h1, .help h1{
+        font-size: .9rem;
+    }
+    .navBar{
+        padding: 10px;
+    }
+    .search img{
+        width: 20px;
+    }
+    .noti{
+        margin-right: 10px;
+    }
+    .noti img{
+        width: 20px;
+    }
+    .categoryContainer{
+        width: 70%;
+    }
+    .overViewContainer{
+        margin-left: 80px;
+    }
+    .news{
+        height: 200px;
+    }
+    #a{
+        height: 200px;
+    }
+    .registerForm button{
+        width: 50%;
+        margin-left: 10%;
+
+    }
+    .registerFormTitle h1{
+        font-size: 1.6rem;
+    }
+    .registerForm input{
+        height: 50px;
+    }
+    .registerForm label{
+        font-size: 1.1rem;
+    }
+    .switchToSignIn{
+        margin-top: 30px;
+    }
+}
+@media(max-width:460px){
+    .mainNavActive{
+        width: 33%;
+    }
+    .overViewContainer{
+        margin-left: 65px;
+    }
+    .featuredNewsTitle{
+        margin-top: 100px;
+    }
+    .register{
+        width: 90%;
+    }
+    .registerForm{
+        margin: 0;
+        padding-left: 40px;
+    }
+    .registerForm input{
+        width: 90%;
+    }
+    .registerForm button{
+        width: 70%;
+    }
+    .signIn{
+        width: 90%;
+        min-height: 80vh;
+    }
+}
+@media(max-width:330px){
+    .registerFormTitle h1{
+        font-size: 1.5rem;
+    }
+    .registerLogo h2{
+        font-size: 1.3rem;
+    }
+    .register{
+        width: 100%;
+        height: 100%;
+    }
+}
+
