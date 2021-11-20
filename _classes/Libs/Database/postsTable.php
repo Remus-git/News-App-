@@ -26,7 +26,7 @@
         public function getAll(){
             try{
                 $statement = $this->db->prepare("
-                    SELECT posts.*,users.name,users.photo FROM posts LEFT JOIN users ON users.id = posts.user_id
+                    SELECT posts.*,users.name,users.photo FROM posts LEFT JOIN users ON users.id = posts.user_id ORDER BY id DESC
                 ");
                 $statement->execute();
                 return $statement->fetchAll();

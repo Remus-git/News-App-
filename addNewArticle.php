@@ -12,8 +12,14 @@
     <script src="https://kit.fontawesome.com/5af73e67ac.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <?php 
+        include('vendor/autoload.php');
+        use Helpers\Auth;
+        $auth = Auth::check();
+    ?>
     <div class="mainContainer">
-        <?php include ('navBar.php') ?>
+        <?php include ('navBar.php');
+        ?>
         <div class="addArticleContainer">
             <form action="/_actions/addArticle.php" method="post" enctype="multipart/form-data">
                 <h1>Add New Article</h1>

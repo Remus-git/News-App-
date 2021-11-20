@@ -71,30 +71,48 @@
                         </a>    
                     </div>
             </div>
-            <div class="postContainer">
-                <?php foreach($postData as $post) :?>
-                    <div class="post">
-                        <div class="authorProfile">
-                            <img src="/_actions/photos/<?= $post->photo?>" alt="">
-                            <h3><?=$post->name?></h3>
-                        </div>
-                        <div class="postTitle">
-                            <h1><?= $post->title ?></h1>
-                        </div>
-                        <div class="postContent">
-                            <span><?= $post->content?></span>
-                        </div>
-                        <?php if($post->post_photo) :?>
-                            <div class="contentImage">
-                                <img src="/_actions/post_images/<?= $post->post_photo ?>" alt="">
+            <?php if(isset($_SESSION['user'])) : ?>
+                <div class="postContainer">
+                    <?php foreach($postData as $post) :?>
+                        <div class="post">
+                            <?php if($post->post_photo) :?>
+                                <div class="contentImage">
+                                    <img src="/_actions/post_images/<?= $post->post_photo ?>" alt="">
+                                </div>
+                            <?php endif ?>
+                            <div class="authorProfile">
+                                <img src="/_actions/photos/<?= $post->photo?>" alt="">
+                                <h3><?=$post->name?></h3>
                             </div>
-                        <?php endif ?>
-                        <div class="postComment">
-                            <img src="/icons/message-square.svg" alt="">
+                            <div class="postTitle">
+                                <h1><?= $post->title ?></h1>
+                            </div>
+                            <div class="postContent">
+                                <span><?= $post->content?></span>
+                            </div>
+                            <div class="postLikeAndComment">
+                                <div class="postLike">
+                                    <img src="/icons/heart.svg" alt="">
+                                </div>
+                                <div class="postComment">
+                                    <img src="/icons/message-square.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="comment">
+                                <form action="/_actions/addComment.php?id=<?=$post->id?>" method="post">
+                                    <input type="text" name="comment" id="comment" placeholder="Add Comment">
+                                    <button type="submit">Add</button>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                <?php endforeach ?>
-            </div>
+                    <?php endforeach ?>
+                </div>
+            <?php endif ?>
+            <?php if(!(isset($_SESSION['user']))) : ?>
+                <div class="registerReminder">
+                    <h1>Please Sign In First To Use All The Functions</h1>
+                </div>
+            <?php endif ?>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
