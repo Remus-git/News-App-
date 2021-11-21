@@ -34,4 +34,17 @@
                 $e->getMessage();
             }
         }
+        public function individualPost($post_id){
+            try{
+                $statement = $this->db->prepare("
+                    SELECT posts.*,users.name,users.photo FROM posts LEFT JOIN users ON posts.id = :post_id
+                ");
+                $statement->execute([
+                    ':post_id'=>$post_id
+                ]);
+                return $statement->fetch();
+            }catch(PDOException $e){
+
+            }
+        }
     }

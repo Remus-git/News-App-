@@ -21,5 +21,18 @@
             }
             
         }
+        public function getComment(){
+            try{
+                $query = "
+                            SELECT comments.*,users.*,posts.id FROM comments JOIN users ON users.id = comments.user_id JOIN posts ON posts.id = comments.post_id
+                ";
+                $statement = $this->db->prepare($query);
+                $statement->execute();
+                return $statement->fetchAll();
+            }
+            catch(PDOException $e){
+                $e->getMessage();
+            }
+        }
     
     }

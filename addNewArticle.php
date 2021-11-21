@@ -34,7 +34,7 @@
                         <option value="Sports">
                     </datalist>
                 <label for="title">Title Of Article</label>
-                <input type="text" name="title" id="title" placeholder="Title Here">
+                <input type="text" name="title" id="title" placeholder="Title Here" required>
                 <label for="content">Content</label>
                 <textarea name="content" id="content" cols="30" rows="15" placeholder="Content Here"></textarea>
                 <label for="photo">Photo</label>

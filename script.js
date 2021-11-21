@@ -15,7 +15,7 @@ const profileEditBtn = $('.editIcon');
 const userProfile = $('.userProfile');
 const editUserProfile = $('.editUserProfile');
 
-const postContent = $('.postContent');
+const postContent = $('.indiPostContent');
 
 /* Expend Nav Bar*/
 expendBtn.click(function(e){
@@ -47,6 +47,6 @@ profileEditBtn.click(function(e){
 /* Expend Article Content */
 postContent.click(function(e){
     e.preventDefault();
-    $(this).addClass('postContentExpend');
+    $(this).toggleClass('postContentExpend');
 })
 

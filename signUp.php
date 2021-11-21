@@ -25,13 +25,13 @@
                 <div class="registerForm">
                     <form action="/_actions/create.php" method="post">
                         <label for="name">Name</label>
-                        <input type="text" name="name" placeholder="name" id="name">
+                        <input type="text" name="name" placeholder="name" id="name" required>
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="email" placeholder="email">
+                        <input type="email" name="email" id="email" placeholder="email" required>
                         <label for="phone">Phone</label>
                         <input type="text" name="phone" id="phone" placeholder="phone">
                         <label for="password">Password</label>
-                        <input type="password" name="password" id="password" placeholder="password">
+                        <input type="password" name="password" id="password" placeholder="password" required>
                         <button type="submit">Create</button>
                     </form>
                 </div>    

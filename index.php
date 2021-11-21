@@ -15,14 +15,18 @@
     <?php include('vendor/autoload.php');
         use Libs\Database\MySQL;
         use Libs\Database\postsTable;
+        use Libs\Database\commentsTable;
         $table = new postsTable(new MySQL());
         $postData = $table->getAll();
+
+        $commentTable = new commentsTable(new MySQL());
+        $commentData = $commentTable->getComment();
         session_start();
     ?>
     <div class="mainContainer">
         <?php include('navBar.php')  ?>
         <div class="overViewContainer">
-            <div class="categoryContainer">
+            <div class="categoryContainer">1
                 <div class="searchAndNoti">
                     <div class="search">
                         <img src="/icons/search.svg" alt="">
@@ -74,37 +78,56 @@
             <?php if(isset($_SESSION['user'])) : ?>
                 <div class="postContainer">
                     <?php foreach($postData as $post) :?>
-                        <div class="post">
-                            <?php if($post->post_photo) :?>
-                                <div class="contentImage">
-                                    <img src="/_actions/post_images/<?= $post->post_photo ?>" alt="">
+                            <div class="indiPostContainer">
+                                <div class="indiPost">
+                                    <?php if(   $post->post_photo) : ?>
+                                        <div class="indiPostImage">
+                                            <img src="/_actions/post_images/<?= $post->post_photo ?>" alt="">
+                                        </div>
+                                    <?php endif ?>
+                                    <div class="indiPostInfo">
+                                        <div class="indiPostAuthor">
+                                            <img src="/_actions/photos/<?= $post->photo?>" alt="">
+                                            <h3><?=$post->name?></h3>
+                                        </div>
+                                        <div class="indiPostTitle">
+                                            <h1><?= $post->title ?></h1>
+                                        </div>
+                                        <div class="indiPostContent">
+                                            <h3><?= $post->content?></h3>
+                                        </div>
+                                        <div class="postLikeAndComment">
+                                                    <div class="postLike">
+                                                        <img src="/icons/heart.svg" alt="">
+                                                    </div>
+                                                    <div class="postComment">
+                                                        <a href="individualPost.php?id=<?=$post->id?>"><img src="/icons/message-square.svg" alt=""></a>
+                                                    </div>
+                                        </div>
+                                        <div class="comment">
+                                                    <form action="/_actions/addComment.php?id=<?=$post->id?>" method="post">
+                                                        <input type="text" name="comment" id="comment" placeholder="Add Comment">
+                                                        <button type="submit">Add</button>
+                                                    </form>
+                                        </div>
+                                        <div class="commentDisplayContainer">
+                                            <?php foreach($commentData as $comment) :?>
+                                                <?php if($post->id == $comment->post_id) :?>
+                                                        <div class="commentDisplay">
+                                                            <div class="commentAuthor">
+                                                                <img src="/_actions/photos/<?= $comment->photo?>" alt="">
+                                                            </div>
+                                                            <div class="commentContent">
+                                                                <h3><?= $comment->name ?></h3>
+                                                                <span><?= $comment->content?></span>
+                                                            </div>
+                                                        </div>
+                                                <?php endif ?>
+                                            <?php endforeach ?> 
+                                        </div>    
+                                    </div>
                                 </div>
-                            <?php endif ?>
-                            <div class="authorProfile">
-                                <img src="/_actions/photos/<?= $post->photo?>" alt="">
-                                <h3><?=$post->name?></h3>
                             </div>
-                            <div class="postTitle">
-                                <h1><?= $post->title ?></h1>
-                            </div>
-                            <div class="postContent">
-                                <span><?= $post->content?></span>
-                            </div>
-                            <div class="postLikeAndComment">
-                                <div class="postLike">
-                                    <img src="/icons/heart.svg" alt="">
-                                </div>
-                                <div class="postComment">
-                                    <img src="/icons/message-square.svg" alt="">
-                                </div>
-                            </div>
-                            <div class="comment">
-                                <form action="/_actions/addComment.php?id=<?=$post->id?>" method="post">
-                                    <input type="text" name="comment" id="comment" placeholder="Add Comment">
-                                    <button type="submit">Add</button>
-                                </form>
-                            </div>
-                        </div>
                     <?php endforeach ?>
                 </div>
             <?php endif ?>
