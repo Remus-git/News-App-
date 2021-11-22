@@ -20,7 +20,12 @@
     <?php 
         include ('vendor/autoload.php');
         use Helpers\Auth;
+        use Libs\Database\postsTable;
+        use Libs\Database\MySQL;
         $auth = Auth::check();
+        $table = new postsTable(new MySQL());
+        $auth_id = $auth[0]->id;
+        $postData = $table->getPost($auth_id);
     ?>
     <div class="mainContainer">
         <?php include('navBar.php')?>
@@ -103,34 +108,19 @@
                     <h1>Articles</h1>
                 </div>
                 <div class="articleContainer">
-                    <div class="article">
-                        <div class="articleTitle">
-                            This Season Football
-                        </div>
-                        <div class="articleContent">
-                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo perspiciatis reprehenderit quisquam labore blanditiis molestiae magnam quibusdam odit atque, ad quae voluptatum, veniam reiciendis similique corporis dicta et ut sunt excepturi nam quos itaque iure perferendis! Consequuntur atque maiores quia!</span>
-                        </div>
-                        <img src="/images/sport.jpg" alt="">
-                    </div>
-                    <div class="article"></div>
-                    <div class="article"></div>
-                    <div class="article"></div>
-                    <div class="article"></div>
-                    <div class="article"></div>
-                    <div class="article"></div>
-                    <div class="article"></div>
-                    <div class="article"></div>
-                    <div class="article"></div>
-                    <div class="article"></div>
-                    <div class="article"></div>
-                    <div class="article"></div>
-                    <div class="article"></div>
-                    <div class="article"></div>
-                    <div class="article"></div>
-                    <div class="article"></div>
-                    <div class="article"></div>
-                    <div class="article"></div>
-                    <div class="article"></div>
+                    <?php foreach($postData as $post) : ?>
+                        <?php if($post->post_photo) : ?>
+                            <div class="article">
+                                <div class="articleTitle">
+                                    <?=$post->title?>
+                                </div>
+                                <div class="articleContent">
+                                    <span><?= $post->content ?></span>
+                                </div>
+                                <img src="/_actions/post_images/<?= $post->post_photo ?>" alt="">
+                            </div>
+                        <?php endif ?>    
+                    <?php endforeach ?>    
                 </div>
             </div>
         </div>    

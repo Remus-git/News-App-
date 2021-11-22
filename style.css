@@ -933,6 +933,7 @@ nav{
 }
 .commentAuthor{
     display: flex;
+    margin-left: 10px;
 }
 .commentAuthor img{
     width: 30px;

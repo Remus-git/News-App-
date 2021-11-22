@@ -47,4 +47,18 @@
 
             }
         }
+        public function getPost($auth_id){
+            try{
+                $statement = $this->db->prepare("
+                    SELECT posts.*,users.id FROM posts RIGHT JOIN users ON posts.user_id = users.id WHERE users.id = :auth_id;
+                ");
+                $statement->execute([
+                    ':auth_id'=>$auth_id
+                ]);
+                return $statement->fetchAll();
+            }
+            catch(PDOException $e){
+                $e->getMessage();
+            }
+        }
     }
