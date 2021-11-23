@@ -13,12 +13,18 @@
 </head>
 <body>
     <?php include('vendor/autoload.php');
+        error_reporting(E_ERROR | E_PARSE);
         use Libs\Database\MySQL;
         use Libs\Database\postsTable;
         use Libs\Database\commentsTable;
         $table = new postsTable(new MySQL());
-        $postData = $table->getAll();
-
+        $category_id = $_GET['category_id'];
+        if($category_id){
+            $postData = $table->getAll($category_id);
+        }
+        else{
+            $postData = $table->allTopics();
+        }
         $commentTable = new commentsTable(new MySQL());
         $commentData = $commentTable->getComment();
         session_start();
@@ -26,7 +32,7 @@
     <div class="mainContainer">
         <?php include('navBar.php')  ?>
         <div class="overViewContainer">
-            <div class="categoryContainer">1
+            <div class="categoryContainer">
                 <div class="searchAndNoti">
                     <div class="search">
                         <img src="/icons/search.svg" alt="">
@@ -52,13 +58,13 @@
                 </div>
                 <div class="category">
                     <div class="categoryTitles">
-                        <a href=""><h3>All</h3></a>
-                        <a href=""><h3>Finance</h3></a>
-                        <a href=""><h3>Technology</h3></a>
-                        <a href=""><h3>Politics</h3></a>
-                        <a href=""><h3>Science</h3></a>
-                        <a href=""><h3>Health</h3></a>
-                        <a href=""><h3>Sports</h3></a>
+                        <a href="/index.php"><h3>All</h3></a>
+                        <a href="/index.php?category_id=1"><h3>Finance</h3></a>
+                        <a href="/index.php?category_id=2"><h3>Technology</h3></a>
+                        <a href="/index.php?category_id=3"><h3>Politics</h3></a>
+                        <a href="/index.php?category_id=4"><h3>Science</h3></a>
+                        <a href="/index.php?category_id=5"><h3>Health</h3></a>
+                        <a href="/index.php?category_id=6"><h3>Sports</h3></a>
                     </div>
                     <div class="chevronDown">
                         <img src="/icons/chevron-down.svg" alt="" id="chevronDown">
@@ -106,8 +112,8 @@
                                         </div>
                                         <div class="comment">
                                                     <form action="/_actions/addComment.php?id=<?=$post->id?>" method="post">
-                                                        <input type="text" name="comment" id="comment" placeholder="Add Comment">
-                                                        <button type="submit">Add</button>
+                                                        <input type="text" name="comment" id="comment" placeholder="Add Comment" required>
+                                                        <button type="submit" id="addComment">Add</button>
                                                     </form>
                                         </div>
                                         <div class="commentDisplayContainer">

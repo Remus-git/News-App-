@@ -23,23 +23,23 @@
         <div class="addArticleContainer">
             <form action="/_actions/addArticle.php" method="post" enctype="multipart/form-data">
                 <h1>Add New Article</h1>
-                <label>Choose a category for Your article:
-                        <input list="categories" name="category"></label>
-                        <datalist id="categories">
-                        <option value="Finance">
-                        <option value="Technology">
-                        <option value="Politics">
-                        <option value="Science">
-                        <option value="Health">
-                        <option value="Sports">
-                    </datalist>
+                    <label>Choose a category for Your article:
+                    </label>
+                    <select id="category" name="category">
+                        <option value="1" data-value='1'>Finance</option>
+                        <option value="2" data-value='2'>Technology</option>
+                        <option value="3" data-value='3'>Politics</option>
+                        <option value="4" data-value='4'>Science</option>
+                        <option value="5" data-value= '5'>Health</option>
+                        <option value="6" data-value='6'>Sports</option>
+                    </select>
                 <label for="title">Title Of Article</label>
                 <input type="text" name="title" id="title" placeholder="Title Here" required>
                 <label for="content">Content</label>
                 <textarea name="content" id="content" cols="30" rows="15" placeholder="Content Here"></textarea>
                 <label for="photo">Photo</label>
                 <input type="file" name="photo" id="photo">
-                <button type="submit">Upload</button>
+                <button type="submit" id="addArticle">Upload</button>
             </form>
         </div>
     </div>
