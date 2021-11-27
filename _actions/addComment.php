@@ -12,7 +12,7 @@
         ':postId' => $_GET['id'],
         ':content' => $_POST['comment']
     ];
-
+    $post_id = $_GET['id'];
     $table = new commentsTable(new MySQL());
     $table->insert($data);
-    HTTP::redirect('index.php');
+    header("location: ../index.php?id=$post_id");

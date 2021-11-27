@@ -14,8 +14,8 @@
             try{
                 $query = " 
                 INSERT INTO posts(
-                    user_id,title,content,category_id,post_photo,created_at
-                )VALUES(:userId,:title,:content,:category,:photo,NOW())
+                    user_id,title,content,category_id,created_at
+                )VALUES(:userId,:title,:content,:category,NOW())
                 ";
                 $statement = $this->db->prepare($query);
                 $statement->execute($data);
@@ -24,16 +24,43 @@
                 $e -> getMessage();
             }
         }
+        public function upload($photoData){
+            try{
+                $query = "
+                INSERT INTO images(post_photo,post_id)VALUES(
+                    :photo,:post_id
+                )";
+                $statement = $this->db->prepare($query);
+                $statement->execute($photoData);
+                return $this->db->lastInsertId();
+            }catch(PDOException $e){
+                $e->getMessage();
+            }
+        }
+
         public function getAll($category_id){
             try{
                 $statement = $this->db->prepare("
-                    SELECT posts.*,users.name,users.photo FROM posts LEFT JOIN users ON users.id = posts.user_id WHERE posts.category_id = :category_id ORDER BY id DESC 
+                    SELECT posts.*,users.name,users.photo FROM posts RIGHT  JOIN users ON users.id = posts.user_id WHERE posts.category_id = :category_id ORDER BY id DESC 
                 ");
                 $statement->execute([
                     ':category_id' => $category_id
                 ]);
                 return $statement->fetchAll();
                 
+            }catch(PDOException $e){
+                $e->getMessage();
+            }
+        }
+        public function getPhoto($post_id){
+            try{
+                $statement =$this->db->prepare("
+                 SELECT images.post_photo FROM images WHERE images.post_id = :postId
+                ");
+                $statement->execute([
+                    ':postId' => $post_id
+                ]);
+                return $statement->fetchAll();
             }catch(PDOException $e){
                 $e->getMessage();
             }
@@ -77,18 +104,4 @@
                 $e->getMessage();
             }
         }
-        // public function getIndividualPost($auth_id,$category_id){
-        //     try{
-        //         $statement = $this->db->prepare("
-                
-        //         ");
-        //         $statement->execute([
-        //             ':auth_id'=> $auth_id,
-        //             ':category_id'=>$category_id
-        //         ]);
-        //     }
-        //     catch(PDOException $e){
-        //         $e->getMessage();
-        //     }
-        // }
     }

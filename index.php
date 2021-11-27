@@ -14,9 +14,13 @@
 <body>
     <?php include('vendor/autoload.php');
         error_reporting(E_ERROR | E_PARSE);
+        
         use Libs\Database\MySQL;
         use Libs\Database\postsTable;
         use Libs\Database\commentsTable;
+        use Libs\Database\likesTable;
+        use Helpers\Auth;
+
         $table = new postsTable(new MySQL());
         $category_id = $_GET['category_id'];
         if($category_id){
@@ -25,9 +29,14 @@
         else{
             $postData = $table->allTopics();
         }
+
+        $likeTable = new likesTable(new MySQL());
+        $likesInfo = $likeTable->getLikes();
+
         $commentTable = new commentsTable(new MySQL());
         $commentData = $commentTable->getComment();
         session_start();
+        
     ?>
     <div class="mainContainer">
         <?php include('navBar.php')  ?>
@@ -81,16 +90,22 @@
                         </a>    
                     </div>
             </div>
-            <?php if(isset($_SESSION['user'])) : ?>
+            <?php if(isset($_SESSION['user'])) : 
+                $auth = Auth::check();    
+            ?>
                 <div class="postContainer">
                     <?php foreach($postData as $post) :?>
                             <div class="indiPostContainer">
                                 <div class="indiPost">
-                                    <?php if(   $post->post_photo) : ?>
                                         <div class="indiPostImage">
-                                            <img src="/_actions/post_images/<?= $post->post_photo ?>" alt="">
+                                            <?php 
+                                                $post_id = $post->id;
+                                                $postPhoto = $table->getPhoto($post_id);
+                                            ?>
+                                            <?php foreach($postPhoto as $photo) : ?>
+                                                <img src="/_actions/post_images/<?= $photo->post_photo ?>" alt="">
+                                            <?php endforeach ?>    
                                         </div>
-                                    <?php endif ?>
                                     <div class="indiPostInfo">
                                         <div class="indiPostAuthor">
                                             <img src="/_actions/photos/<?= $post->photo?>" alt="">
@@ -104,7 +119,9 @@
                                         </div>
                                         <div class="postLikeAndComment">
                                                     <div class="postLike">
-                                                        <img src="/icons/heart.svg" alt="">
+                                                        <a href="/_actions/insertLIke.php?postId=<?=$post->id?>">
+                                                            <img src="/icons/heart.svg" alt="">
+                                                        </a>    
                                                     </div>
                                                     <div class="postComment">
                                                         <a href="individualPost.php?id=<?=$post->id?>"><img src="/icons/message-square.svg" alt=""></a>

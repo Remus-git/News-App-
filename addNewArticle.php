@@ -38,7 +38,7 @@
                 <label for="content">Content</label>
                 <textarea name="content" id="content" cols="30" rows="15" placeholder="Content Here"></textarea>
                 <label for="photo">Photo</label>
-                <input type="file" name="photo" id="photo">
+                <input type="file" name="photo[]" id="photo" multiple>
                 <button type="submit" id="addArticle">Upload</button>
             </form>
         </div>
