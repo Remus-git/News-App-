@@ -31,7 +31,6 @@
         }
 
         $likeTable = new likesTable(new MySQL());
-        $likesInfo = $likeTable->getLikes();
 
         $commentTable = new commentsTable(new MySQL());
         $commentData = $commentTable->getComment();
@@ -118,11 +117,27 @@
                                             <h3><?= $post->content?></h3>
                                         </div>
                                         <div class="postLikeAndComment">
-                                                    <div class="postLike">
-                                                        <a href="/_actions/insertLIke.php?postId=<?=$post->id?>">
-                                                            <img src="/icons/heart.svg" alt="">
-                                                        </a>    
-                                                    </div>
+                                                    <?php $likesInfo = $likeTable->getLikeCounts($post_id);
+                                                         $likesCount = COUNT($likesInfo);
+                                                    ?>
+                                                    
+                                                    <?php $likes=$likeTable->getLikes($post->id,$auth[0]->id);
+                                                          if(!($likes)) :
+                                                    ?>
+                                                            <div class="postLike">
+                                                                <a href="/_actions/insertLIke.php?postId=<?=$post->id?>">
+                                                                    <img src="/icons/heart.svg" alt="">
+                                                                </a>
+                                                                <span><?= $likesCount?></span>  
+                                                            </div>
+                                                    <?php else : ?>
+                                                            <div class="postLike">
+                                                                <a href="">
+                                                                    <img src="/icons/heartFilled.svg" alt="">
+                                                                </a>
+                                                                <span><?= $likesCount?></span>  
+                                                            </div>
+                                                    <?php endif ?>
                                                     <div class="postComment">
                                                         <a href="individualPost.php?id=<?=$post->id?>"><img src="/icons/message-square.svg" alt=""></a>
                                                     </div>

@@ -15,4 +15,4 @@
     $post_id = $_GET['id'];
     $table = new commentsTable(new MySQL());
     $table->insert($data);
-    header("location: ../index.php?id=$post_id");
+    header("location: ../index.php?id=".$post_id);

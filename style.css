@@ -250,6 +250,15 @@ nav{
 }
 .postLike{
     padding-right: 20px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+.postLike span{
+    color: white;
+    opacity: 80%;
+    margin-top: 2px;
+    margin-left: 2px;
 }
 .postComment img,.postLike img{
     cursor: pointer;
