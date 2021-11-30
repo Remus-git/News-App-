@@ -108,8 +108,7 @@
                     <h1>Articles</h1>
                 </div>
                 <div class="articleContainer">
-                    <?php foreach($postData as $post) : ?>
-                        <?php if($post->post_photo) : ?>
+                    <?php foreach($postData as $post) :?>
                             <div class="article">
                                 <div class="articleTitle">
                                     <?=$post->title?>
@@ -117,9 +116,14 @@
                                 <div class="articleContent">
                                     <span><?= $post->content ?></span>
                                 </div>
-                                <img src="/_actions/post_images/<?= $post->post_photo ?>" alt="">
+                                <?php 
+                                    $post_id = $post->id;
+                                    $postPhoto = $table->getPhoto($post_id);
+                                ?>
+                                <?php foreach($postPhoto as $photo) : ?>
+                                    <img src="/_actions/post_images/<?= $photo->post_photo ?>" alt="">
+                                <?php endforeach ?>    
                             </div>
-                        <?php endif ?>    
                     <?php endforeach ?>    
                 </div>
             </div>

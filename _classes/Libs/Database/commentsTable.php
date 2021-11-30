@@ -34,5 +34,20 @@
                 $e->getMessage();
             }
         }
+        public function getcommentCounts($postId){
+            try{
+                $statement = $this->db->prepare("
+                    SELECT * FROM comments WHERE comments.post_id = :post_id
+                ");
+                 $statement->execute([
+                        ':post_id' => $postId
+                    ]);
+                 return $statement->fetchAll();
+                
+            }
+            catch(PDOException $e){
+                $e->getMessage();
+            }
+        }
     
     }

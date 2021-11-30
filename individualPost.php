@@ -20,15 +20,16 @@
          use Helpers\HTTP;
      
          $post_id = $_GET['id'];
+         $user_id = $_GET['userId'];
          $table = new postsTable(new MySQL());
-         $post=$table->individualPost($post_id);
+         $post=$table->individualPost($post_id,$user_id);
         session_start();
     ?>
     <div class="mainContainer">
         <?php include('navBar.php') ?>
         <div class="indiPostContainer">
             <div class="indiPost">
-                <?php if(   $post->post_photo) : ?>
+                <?php if($post->post_photo) : ?>
                     <div class="indiPostImage">
                         <img src="/_actions/post_images/<?= $post->post_photo ?>" alt="">
                     </div>

@@ -68,7 +68,7 @@
         public function allTopics(){
             try{
                 $statement = $this->db->prepare("
-                SELECT posts.*,users.name,users.photo FROM posts LEFT JOIN users ON users.id = posts.user_id ORDER BY id DESC 
+                SELECT posts.*,users.name,users.photo,users.id as usersId FROM posts LEFT JOIN users ON users.id = posts.user_id ORDER BY id DESC 
                 ");
                 $statement->execute();
                 return $statement->fetchAll();
@@ -77,13 +77,14 @@
                 $e->getMessage();
             }
         }
-        public function individualPost($post_id){
+        public function individualPost($post_id,$user_id){
             try{
                 $statement = $this->db->prepare("
-                    SELECT posts.*,users.name,users.photo FROM posts LEFT JOIN users ON posts.id = :post_id
+                    SELECT posts.*,users.name,users.photo FROM posts LEFT JOIN users ON posts.id = :post_id AND posts.user_id = :user_id
                 ");
                 $statement->execute([
-                    ':post_id'=>$post_id
+                    ':post_id'=>$post_id,
+                    ':user_id'=>$user_id
                 ]);
                 return $statement->fetch();
             }catch(PDOException $e){
@@ -93,7 +94,7 @@
         public function getPost($auth_id){
             try{
                 $statement = $this->db->prepare("
-                    SELECT posts.*,users.id FROM posts RIGHT JOIN users ON posts.user_id = users.id WHERE users.id = :auth_id;
+                    SELECT posts.* FROM posts WHERE posts.user_id = :auth_id
                 ");
                 $statement->execute([
                     ':auth_id'=>$auth_id

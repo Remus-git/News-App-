@@ -138,8 +138,12 @@
                                                                 <span><?= $likesCount?></span>  
                                                             </div>
                                                     <?php endif ?>
+                                                    <?php $commentInfo = $commentTable->getcommentCounts($post_id);
+                                                         $commentCount = COUNT($commentInfo);
+                                                    ?>
                                                     <div class="postComment">
-                                                        <a href="individualPost.php?id=<?=$post->id?>"><img src="/icons/message-square.svg" alt=""></a>
+                                                        <a></a>
+                                                        <span><?= $commentCount?></span>
                                                     </div>
                                         </div>
                                         <div class="comment">

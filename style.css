@@ -248,13 +248,13 @@ nav{
     padding: 20px;
     padding-bottom: 10px;
 }
-.postLike{
+.postLike,.postComment{
     padding-right: 20px;
     height: auto;
     display: flex;
     justify-content: center;
 }
-.postLike span{
+.postLike span,.postComment span{
     color: white;
     opacity: 80%;
     margin-top: 2px;
