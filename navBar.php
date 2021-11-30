@@ -20,11 +20,11 @@
                         <h1>Home</h1>
                     </div>
                     <div class="favourite">
-                        <a href=""><img src="/icons/star.svg" alt=""></a>
+                        <a href="#"><img src="/icons/star.svg" alt=""></a>
                         <h1>Favourite</h1>
                     </div>
                     <div class="help">
-                        <a href=""><img src="/icons/help-circle.svg" alt=""></a>
+                        <a href="#"><img src="/icons/help-circle.svg" alt=""></a>
                         <h1>Help</h1>
                     </div>
                     <?php if(isset($_SESSION['user'])) : ?>

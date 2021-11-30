@@ -96,10 +96,12 @@ nav{
 }
 .user img,.home img,.favourite img,.help img,.expend img,.logout img{
     width: 28px;
-    opacity: 70%;
+    opacity: 50%;
     cursor: pointer;
 }
-
+.activeMenu img{
+    opacity: 100%;
+}
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 .overViewContainer{
     width: 100%;

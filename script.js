@@ -51,4 +51,11 @@ postContent.click(function(e){
     $(this).toggleClass('postContentExpend');
 })
 
-
+/* Navbar Active*/
+$(document).ready(function() {
+    $(".menu [href]").each(function() {
+        if (this.href == window.location.href) {
+            $(this).addClass("activeMenu");
+        }
+    });
+});
